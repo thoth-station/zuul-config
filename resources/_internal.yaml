@@ -20,8 +20,8 @@ resources:
       tenant: local
       description: Internal configuration project
       source-repositories:
-        - goern/zuul-test-config:
+        - thoth-station/zuul-test-config:
             zuul/config-project: True
-        - goern/zuul-test-jobs
+        - thoth-station/zuul-test-jobs
         - zuul-jobs:
             connection: local-git

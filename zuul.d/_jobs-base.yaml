@@ -7,7 +7,7 @@
     post-run:
       - playbooks/base/post.yaml
     roles:
-      - zuul: goern/zuul-test-jobs
+      - zuul: thoth-station/zuul-test-jobs
       - zuul: zuul-jobs
     timeout: 1800
     # Set attempts to 1 until it's working well
@@ -46,7 +46,7 @@
       nodes: []
 
 - project:
-    name: goern/zuul-test-config
+    name: thoth-station/zuul-test-config
     check:
       jobs:
         - config-check
@@ -68,7 +68,7 @@
 
 
 - project:
-    name: goern/zuul-test-jobs
+    name: thoth-station/zuul-test-jobs
     check:
       jobs:
         - linters

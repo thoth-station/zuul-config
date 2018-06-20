@@ -5,9 +5,9 @@
     source:
       github.com:
         config-projects:
-          - goern/zuul-test-config
+          - thoth-station/zuul-test-config
         untrusted-projects:
-          - goern/zuul-test-jobs
+          - thoth-station/zuul-test-jobs
 
 - tenant:
     name: 'local'
@@ -17,4 +17,4 @@
           - zuul-jobs:
               include:
                 - job
-              shadow: goern/zuul-test-jobs
+              shadow: thoth-station/zuul-test-jobs
