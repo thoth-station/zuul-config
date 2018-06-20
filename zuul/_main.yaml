@@ -1,0 +1,20 @@
+# This file is managed by ansible, do not edit directly
+---
+- tenant:
+    name: 'local'
+    source:
+      github.com:
+        config-projects:
+          - goern/zuul-test-config
+        untrusted-projects:
+          - goern/zuul-test-jobs
+
+- tenant:
+    name: 'local'
+    source:
+      local-git:
+        untrusted-projects:
+          - zuul-jobs:
+              include:
+                - job
+              shadow: goern/zuul-test-jobs

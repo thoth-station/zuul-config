@@ -1,0 +1,17 @@
+# This file is managed by sfconfig, do not edit manually
+
+labels:
+  - name: centos-oci
+    min-ready: 2
+
+providers:
+  - name: oci-provider-managesf
+    driver: oci
+    hypervisor: managesf.sftests.com
+    pools:
+      - name: main
+        max-servers: 10
+        labels:
+          - name: centos-oci
+            username: zuul-worker
+

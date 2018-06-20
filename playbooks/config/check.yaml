@@ -1,0 +1,134 @@
+---
+- hosts: localhost
+  tasks:
+    - name: Set speculative config path
+      set_fact:
+        config_root: "{{ zuul.executor.src_root }}/{{ zuul.project.canonical_name }}"
+
+    - name: Fetch default config
+      get_url:
+        url: "{{ gateway_url }}/_defconf.tgz"
+        dest: "{{ config_root }}/"
+      retries: 30
+      delay: 1
+
+    - name: Create defconf directory
+      file:
+        path: "{{ config_root }}/defconf"
+        state: directory
+
+    - name: Extract default config
+      unarchive:
+        src: "{{ config_root }}/_defconf.tgz"
+        dest: "{{ config_root }}/defconf/"
+
+    - name: include arch.yaml
+      include_vars:
+        file: "{{ config_root }}/defconf/arch.yaml"
+        name: arch
+
+    - name: Create build directory to merge configuration
+      file:
+        path: "{{ config_root }}/build"
+        state: directory
+
+    - name: Check gerrit replication
+      command: git config -f gerrit/replication.config -l
+      args:
+        chdir: "{{ config_root }}"
+
+    # Use "env -" to remove zuul-executor environment that modifies python runtime (e.g. defines a 'zuul' python module)
+    - name: Check gerrit commentlinks
+      command: env - python -c "import yaml; 'commentlinks' in yaml.safe_load(open('gerrit/commentlinks.yaml'))"
+      args:
+        chdir: "{{ config_root }}"
+
+    - name: Check dashboards
+      command: env - python2 /usr/local/bin/sf-update-dashboard --check --input dashboards/
+      args:
+        chdir: "{{ config_root }}"
+
+    - name: Check policy file
+      command: env - python -c "import yaml; yaml.safe_load(open('policies/policy.yaml'))"
+      args:
+        chdir: "{{ config_root }}"
+
+    - name: Validate repoxplorer configuration
+      block:
+        - name: Check syntax errors in repoxplorer definition files
+          command: >
+            env - repoxplorer-config-validate --config {{ config_root }}/defconf/defconf-repoxplorer.py
+          args:
+            chdir: "{{ config_root }}"
+      when: '"repoxplorer" in arch.roles'
+
+    - name: Validate nodepool configuration
+      block:
+        - name: Install fake _nodepool.yaml
+          copy:
+            remote_src: true
+            src: "{{ config_root }}/defconf/defconf-nodepool.yaml"
+            dest: "{{ config_root }}/build/_nodepool.yaml"
+
+        - name: Merge nodepool config repo files
+          command: >
+            env - /usr/share/sf-config/scripts/sf-nodepool-conf-merger.py
+                nodepool/ build/nodepool.yaml
+          args:
+            chdir: "{{ config_root }}"
+
+        - name: Run nodepool config-validate
+          command: >
+            env - /opt/rh/rh-python35/root/bin/nodepool -c build/nodepool.yaml
+                config-validate
+          args:
+            chdir: "{{ config_root }}"
+      when: '"nodepool-launcher" in arch.roles'
+
+    - name: Validate zuul configuration
+      block:
+        - name: Install fake zuul.conf
+          copy:
+            remote_src: true
+            src: "{{ config_root }}/defconf/defconf-zuul.conf"
+            dest: "{{ config_root }}/build/zuul.conf"
+
+        - name: Merge zuul config repo files
+          command: >
+            env - /usr/share/sf-config/scripts/zuul-conf-merger.py
+                zuul/ build/zuul.yaml
+          args:
+            chdir: "{{ config_root }}"
+
+        # This is no longer available in zuul, see I4a9d9473ce028e0b0cd32a8c48598c1682e1c329
+        # - name: Validate zuul config syntax
+        #   command: >
+        #     env - /opt/rh/rh-python35/root/bin/zuul-scheduler -c build/zuul.conf -t
+        #   args:
+        #     chdir: "{{ config_root }}"
+      when: '"zuul-scheduler" in arch.roles'
+
+    - name: Validate metrics dashboards
+      block:
+        - name: Check syntax errors in metrics dashboards
+          shell: |
+           find . -regextype posix-egrep -regex '.*.(yaml|yml)$' | xargs -I yaml grafana-dashboard validate yaml
+          args:
+            chdir: "{{ config_root }}/metrics"
+      when: '"grafana" in arch.roles'
+
+    - set_fact:
+        remote_gateway: "{{ gateway_url }}"
+      when: tenant_config is defined and tenant_config
+
+    - name: Copy service_user password in workspace
+      copy:
+        content: "{{ service_user.password }}"
+        dest: "{{ config_root }}/.service_user_password"
+      no_log: true
+      when: tenant_config is defined and tenant_config
+
+    - name: Check resources changes
+      command: env - /usr/local/bin/resources.sh validate {{ remote_gateway | default('') }}
+      args:
+        chdir: "{{ config_root }}"

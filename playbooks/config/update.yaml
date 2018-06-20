@@ -1,0 +1,4 @@
+---
+- hosts: localhost
+  tasks:
+    - include_tasks: update_local.yaml

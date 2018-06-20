@@ -1,0 +1,27 @@
+# This file is managed by ansible, do not edit directly
+---
+resources:
+  tenants:
+    local:
+      description: "The local tenant."
+      url: "https://sftests.com/manage"
+      default-connection: github.com
+
+  connections:
+    github.com:
+      base_url: "https://github.com"
+      type: github
+    local-git:
+      base_url: "file:///var/lib/software-factory/git"
+      type: git
+
+  projects:
+    internal:
+      tenant: local
+      description: Internal configuration project
+      source-repositories:
+        - goern/zuul-test-config:
+            zuul/config-project: True
+        - goern/zuul-test-jobs
+        - zuul-jobs:
+            connection: local-git
