@@ -8,4 +8,4 @@ projects:
     distro_branch: rpm-master
     source_branch: master
     distro_target: centos
-    rdoinfo_repo: https://sftests.com/r/default-rdoinfo
+    rdoinfo_repo: https://zuul.thoth-station.ninja/r/default-rdoinfo

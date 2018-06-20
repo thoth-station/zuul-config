@@ -9,7 +9,7 @@ resources:
     config-ptl:
       description: Team lead for the config repo
       members:
-        - admin@sftests.com
+        - admin@zuul.thoth-station.ninja
     config-core:
       description: Team core for the config repo
       members: []

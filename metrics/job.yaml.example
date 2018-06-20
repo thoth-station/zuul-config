@@ -31,7 +31,7 @@ dashboard:
           type: fill
         # Replace period with underscore on the FQDN
         # eg managesf_sftests_com
-        measurement: /zuul.tenant.local.pipeline.*.project.FQDN.JOB_NAME.master.job.*/
+        measurement: /zuul.tenant.local.pipeline.*.project_zuul_thoth-station_ninja.JOB_NAME.master.job.*/
         orderByTime: ASC
         resultFormat: time_series
         select:
@@ -61,7 +61,7 @@ dashboard:
           type: fill
         # Replace period with underscore on the FQDN
         # eg managesf_sftests_com
-        measurement: /zuul.tenant.local.pipeline.*.project.FQDN.JOB_NAME.master.job.*.FAILURE/
+        measurement: /zuul.tenant.local.pipeline.*.project.zuul_thoth-station_ninja.JOB_NAME.master.job.*.FAILURE/
         orderByTime: ASC
         resultFormat: time_series
         select:
@@ -97,7 +97,7 @@ dashboard:
           type: fill
         # Replace period with underscore on the FQDN
         # eg managesf_sftests_com
-        measurement: /zuul.tenant.local.pipeline.*.project.FQDN.JOB_NAME.master.job.*.SUCCESS/
+        measurement: /zuul.tenant.local.pipeline.*.project.zuul_thoth-station_ninja.JOB_NAME.master.job.*.SUCCESS/
         orderByTime: ASC
         resultFormat: time_series
         select:
