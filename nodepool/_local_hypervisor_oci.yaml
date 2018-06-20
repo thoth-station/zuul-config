@@ -7,7 +7,7 @@ labels:
 providers:
   - name: oci-provider-managesf
     driver: oci
-    hypervisor: managesf.sftests.com
+    hypervisor: managesf.zuul.thoth-station.ninja
     pools:
       - name: main
         max-servers: 10

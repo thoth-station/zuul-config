@@ -29,7 +29,7 @@
     description: Validate the config repo.
     run: playbooks/config/check.yaml
     vars:
-      gateway_url: https://sftests.com
+      gateway_url: https://zuul.thoth-station.ninja
       tenant_config: False
     nodeset:
       nodes: []

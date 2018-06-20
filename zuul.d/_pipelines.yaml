@@ -19,7 +19,7 @@
     start:
       github.com:
         status: 'pending'
-        status-url: "https://sftests.com/zuul/t/local/status.html"
+        status-url: "https://zuul.thoth-station.ninja/zuul/t/local/status.html"
         comment: false
     success:
       github.com:
@@ -77,7 +77,7 @@
     start:
       github.com:
         status: 'pending'
-        status-url: "https://sftests.com/zuul/t/local/status.html"
+        status-url: "https://zuul.thoth-station.ninja/zuul/t/local/status.html"
         comment: false
     success:
       github.com:
@@ -107,7 +107,7 @@
       sqlreporter:
     failure:
       smtp:
-        from: "zuul@sftests.com"
+        from: "zuul@zuul.thoth-station.ninja"
         to: "root@localhost"
         subject: '[Zuul] Job failed in post pipeline: {change.project}'
       sqlreporter:
@@ -126,7 +126,7 @@
       sqlreporter:
     failure:
       smtp:
-        from: "zuul@sftests.com"
+        from: "zuul@zuul.thoth-station.ninja"
         to: "root@localhost"
         subject: '[Zuul] Job failed in release pipeline: {change.project}'
       sqlreporter:
@@ -144,7 +144,7 @@
       sqlreporter:
     failure:
       smtp:
-        from: "zuul@sftests.com"
+        from: "zuul@zuul.thoth-station.ninja"
         to: "root@localhost"
         subject: '[Zuul] Job failed in periodic pipeline: {change.project}'
       sqlreporter:

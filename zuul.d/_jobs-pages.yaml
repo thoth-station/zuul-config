@@ -12,7 +12,7 @@
     protected: true
     vars:
       src_dir: /
-      fqdn: sftests.com
+      fqdn: zuul.thoth-station.ninja
 
 - job:
     name: build-pages

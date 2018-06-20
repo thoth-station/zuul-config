@@ -4,7 +4,7 @@ resources:
   tenants:
     local:
       description: "The local tenant."
-      url: "https://sftests.com/manage"
+      url: "https://zuul.thoth-station.ninja/manage"
       default-connection: github.com
 
   connections:
