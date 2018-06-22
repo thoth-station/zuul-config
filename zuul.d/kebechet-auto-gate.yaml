@@ -1,10 +1,10 @@
 - pipeline:
-    name: sesheta-auto-gate
+    name: kebechet-auto-gate
     description: |
-      Changes that have been created by Sesheta to update dependencies
+      Changes that have been created by Kebechet to update dependencies
       will be merged based on labels. No human intervention required!
-    success-message: Build succeeded (sesheta-auto-gate pipeline).
-    failure-message: Build failed (sesheta-auto-gate pipeline).
+    success-message: Build succeeded (kebechet-auto-gate pipeline).
+    failure-message: Build failed (kebechet-auto-gate pipeline).
     manager: dependent
     precedence: high
     require:
