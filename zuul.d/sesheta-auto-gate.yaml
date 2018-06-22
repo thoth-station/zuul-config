@@ -1,0 +1,46 @@
+- pipeline:
+    name: sesheta-auto-gate
+    description: |
+      Changes that have been created by Sesheta to update dependencies
+      will be merged based on labels. No human intervention required!
+    success-message: Build succeeded (sesheta-auto-gate pipeline).
+    failure-message: Build failed (sesheta-auto-gate pipeline).
+    manager: dependent
+    precedence: high
+    require:
+      github.com:
+        label: 
+          - bot
+        status: "thoth-zuul-test\\[bot\\]:local/check:success"
+        open: True
+        current-patchset: True
+    trigger:
+      github.com:
+        - event: pull_request
+          action: comment
+          comment: (?i)^\s*regate\s*$
+        - event: pull_request
+          action: status
+          status: "thoth-zuul-test\\[bot\\]:local/check:success"
+        - event: pull_request
+          action: labeled
+          label:
+            - bot
+    start:
+      github.com:
+        status: 'pending'
+        status-url: "https://zuul.thoth-station.ninja/zuul/t/local/status.html"
+        comment: false
+    success:
+      github.com:
+        status: 'success'
+        merge: true
+        comment: true
+      sqlreporter:
+    failure:
+      github.com:
+        status: 'failure'
+        comment: true
+      sqlreporter:
+    window-floor: 20
+    window-increase-factor: 2
