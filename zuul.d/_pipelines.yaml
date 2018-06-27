@@ -107,8 +107,8 @@
       sqlreporter:
     failure:
       smtp:
-        from: "zuul@zuul.thoth-station.ninja"
-        to: "root@localhost"
+        from: "goern+sesheta@redhat.com"
+        to: "goern@redhat.com"
         subject: '[Zuul] Job failed in post pipeline: {change.project}'
       sqlreporter:
 
@@ -127,8 +127,8 @@
     failure:
       sqlreporter:
       smtp:
-        from: "zuul@zuul.thoth-station.ninja"
-        to: "root@localhost"
+        from: "goern+sesheta@redhat.com"
+        to: "goern@redhat.com"
         subject: '[Zuul] Job failed in pre-release pipeline: {change.project}'
 
 - pipeline:
@@ -140,13 +140,13 @@
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/[0-9]+(\.[0-9]+)*$
+          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
     success:
       sqlreporter:
     failure:
       smtp:
-        from: "zuul@zuul.thoth-station.ninja"
-        to: "root@localhost"
+        from: "goern+sesheta@redhat.com"
+        to: "goern@redhat.com"
         subject: '[Zuul] Job failed in release pipeline: {change.project}'
       sqlreporter:
 
@@ -163,8 +163,8 @@
       sqlreporter:
     failure:
       smtp:
-        from: "zuul@zuul.thoth-station.ninja"
-        to: "root@localhost"
+        from: "goern+sesheta@redhat.com"
+        to: "goern@redhat.com"
         subject: '[Zuul] Job failed in periodic pipeline: {change.project}'
       sqlreporter:
 
