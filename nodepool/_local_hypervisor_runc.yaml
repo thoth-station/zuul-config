@@ -1,17 +1,16 @@
 # This file is managed by sfconfig, do not edit manually
 
 labels:
-  - name: centos-oci
+  - name: runc-centos
     min-ready: 2
 
 providers:
-  - name: oci-provider-managesf
-    driver: oci
-    hypervisor: managesf.zuul.thoth-station.ninja
+  - name: managed-runc-provider
+    driver: runc
     pools:
-      - name: main
+      - name: managesf.zuul.thoth-station.ninja
         max-servers: 10
         labels:
-          - name: centos-oci
+          - name: runc-centos
             username: zuul-worker
 
