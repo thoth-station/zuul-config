@@ -1,13 +1,27 @@
+# This file is managed by ansible, do not edit directly
+---
 resources:
-  connections:
-    github.com:
-      base_url: https://github.com
-      type: github
-    local-git:
-      base_url: file:///var/lib/software-factory/git
-      type: git
   tenants:
     local:
+      description: "The local tenant."
+      url: "https://zuul.thoth-station.ninja/manage"
       default-connection: github.com
-      description: The local tenant.
-      url: https://zuul.thoth-station.ninja/manage
+
+  connections:
+    github.com:
+      base_url: "https://github.com"
+      type: github
+    local-git:
+      base_url: "file:///var/lib/software-factory/git"
+      type: git
+
+  projects:
+    internal:
+      tenant: local
+      description: Internal configuration project
+      source-repositories:
+        - thoth-station/zuul-test-config:
+            zuul/config-project: True
+        - thoth-station/zuul-test-jobs
+        - zuul-jobs:
+            connection: local-git
