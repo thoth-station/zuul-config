@@ -17,7 +17,7 @@
     nodeset:
       nodes:
         - name: container
-          label: centos-oci
+          label: runc-centos
 
 - semaphore:
     name: semaphore-config-update
