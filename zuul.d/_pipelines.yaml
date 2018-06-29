@@ -50,7 +50,7 @@
             type: approved
         # Require label
         label: approved
-        status: "thoth-zuul-test\\[bot\\]:local/check:success"
+        status: "thoth-zuul\\[bot\\]:local/check:success"
         open: True
         current-patchset: True
     trigger:
@@ -69,7 +69,7 @@
           state: request_changes
         - event: pull_request
           action: status
-          status: "thoth-zuul-test\\[bot\\]:local/check:success"
+          status: "thoth-zuul\\[bot\\]:local/check:success"
         - event: pull_request
           action: labeled
           label:
@@ -107,8 +107,8 @@
       sqlreporter:
     failure:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "root@localhost"
         subject: '[Zuul] Job failed in post pipeline: {change.project}'
       sqlreporter:
 
@@ -121,14 +121,14 @@
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?!rc|alpha|beta)((?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+)))?$
+          ref: ^refs/tags/[0-9]+(\.[0-9]+)*(a|b|rc)[0-9]+$
     success:
       sqlreporter:
     failure:
       sqlreporter:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "root@localhost"
         subject: '[Zuul] Job failed in pre-release pipeline: {change.project}'
 
 - pipeline:
@@ -140,13 +140,13 @@
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
+          ref: ^refs/tags/[0-9]+(\.[0-9]+)*$
     success:
       sqlreporter:
     failure:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "root@localhost"
         subject: '[Zuul] Job failed in release pipeline: {change.project}'
       sqlreporter:
 
@@ -163,8 +163,8 @@
       sqlreporter:
     failure:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "root@localhost"
         subject: '[Zuul] Job failed in periodic pipeline: {change.project}'
       sqlreporter:
 

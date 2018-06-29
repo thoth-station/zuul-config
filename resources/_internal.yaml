@@ -14,6 +14,9 @@ resources:
     local-git:
       base_url: "file:///var/lib/software-factory/git"
       type: git
+    git.openstack.org:
+      base_url: "https://git.openstack.org/"
+      type: git
 
   projects:
     internal:
