@@ -114,7 +114,9 @@
 
 - pipeline:
     name: pre-release
-    description: When a commit is tagged with a pre-release tag, this pipeline runs jobs that publish archives and documentation.
+    description: >
+      When a commit is tagged with a pre-release tag, this pipeline runs jobs
+      that publish archives and documentation.
     manager: independent
     precedence: high
     post-review: True
@@ -134,7 +136,8 @@
 - pipeline:
     name: release
     post-review: true
-    description: When a commit is tagged as a release, this pipeline runs jobs that publish archives and documentation.
+    description: >
+      When a commit is tagged as a release, this pipeline runs jobs that publish archives and documentation.
     manager: independent
     precedence: high
     trigger:
