@@ -121,7 +121,7 @@
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/[0-9]+(\.[0-9]+)*(a|b|rc)[0-9]+$
+          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?!rc|alpha|beta)((?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+)))?$
     success:
       sqlreporter:
     failure:
