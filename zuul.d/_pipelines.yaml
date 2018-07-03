@@ -107,49 +107,46 @@
       sqlreporter:
     failure:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "goern+sesheta@redhat.com"
         subject: '[Zuul] Job failed in post pipeline: {change.project}'
       sqlreporter:
 
 - pipeline:
     name: pre-release
-    description: >
-      When a commit is tagged with a pre-release tag, this pipeline runs jobs
-      that publish archives and documentation.
+    description: When a commit is tagged with a pre-release tag, this pipeline runs jobs that publish archives and documentation.
     manager: independent
     precedence: high
     post-review: True
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?!rc|alpha|beta)((?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+)))?$
+          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9alpha|beta|rc.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
     success:
       sqlreporter:
     failure:
       sqlreporter:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "goern+sesheta@redhat.com"
         subject: '[Zuul] Job failed in pre-release pipeline: {change.project}'
 
 - pipeline:
     name: release
     post-review: true
-    description: >
-      When a commit is tagged as a release, this pipeline runs jobs that publish archives and documentation.
+    description: When a commit is tagged as a release, this pipeline runs jobs that publish archives and documentation.
     manager: independent
     precedence: high
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
+          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))$
     success:
       sqlreporter:
     failure:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "goern+sesheta@redhat.com"
         subject: '[Zuul] Job failed in release pipeline: {change.project}'
       sqlreporter:
 
@@ -166,8 +163,8 @@
       sqlreporter:
     failure:
       smtp:
-        from: "goern+sesheta@redhat.com"
-        to: "goern@redhat.com"
+        from: "zuul@zuul.thoth-station.ninja"
+        to: "goern+sesheta@redhat.com"
         subject: '[Zuul] Job failed in periodic pipeline: {change.project}'
       sqlreporter:
 

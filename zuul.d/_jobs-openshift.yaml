@@ -1,0 +1,24 @@
+# This file is managed by sfconfig, do not edit manually
+# The Openshift driver is a Tech Preview, use at your own risk...
+---
+- job:
+    name: base-openshift
+    parent: null
+    description: The base job.
+    pre-run: playbooks/openshift/pre.yaml
+    post-run:
+      - playbooks/base/post.yaml
+    roles:
+      - zuul: thoth-station/zuul-test-jobs
+      - zuul: zuul-jobs
+    timeout: 1800
+    # Set attempts to 1 until it's working well
+    attempts: 1
+    secrets:
+      - site_sflogs
+    nodeset:
+      nodes:
+        - name: namespace
+          label: openshift-project
+    vars:
+      base_image: "python:3.6"
