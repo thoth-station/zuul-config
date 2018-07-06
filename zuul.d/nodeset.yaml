@@ -1,5 +1,5 @@
 - nodeset:
-    name: openshift-project
+    name: thoth-engint
     nodes:
       - name: namespace
         label: thoth-engint
