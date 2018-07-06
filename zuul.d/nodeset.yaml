@@ -1,0 +1,5 @@
+- nodeset:
+    name: thoth-engint
+    nodes:
+      - name: namespace
+        label: thoth-engint
