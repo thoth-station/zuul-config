@@ -1,0 +1,30 @@
+---
+- name: setup kube config
+  shell: >
+    oc --namespace {{ zuul_resources['namespace'].namespace }}                \
+       login {{ zuul_resources['namespace'].host }}                           \
+       --insecure-skip-tls-verify={{ zuul_resources['namespace'].skiptls }}   \
+       --token $(echo {{ zuul_resources['namespace'].token }} | base64 -d)
+
+- name: create CentOS Python 3.6 ImageStream
+  openshift_raw:
+    state: present
+    namespace: "{{ zuul_resources['namespace'].namespace }}"
+    definition:
+      apiVersion: image.openshift.io/v1
+      kind: ImageStream
+      metadata:
+        annotations:
+          openshift.io/image.dockerRepositoryCheck: 2018-07-04T18:44:16Z
+        name: python-36-centos7
+      spec:
+        lookupPolicy:
+          local: true
+        tags:
+        - name: latest
+          from:
+            kind: DockerImage
+            name: registry.centos.org/centos/python-36-centos7
+          importPolicy: {}
+          referencePolicy:
+            type: Source

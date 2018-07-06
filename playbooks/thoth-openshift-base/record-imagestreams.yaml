@@ -1,0 +1,19 @@
+---
+- name: get ImageStream
+  command: oc get imagestreamtags -o "jsonpath={.items[*].metadata.name}"
+  register: _is_name
+  retries: 600
+  delay: 1
+  until: "zuul.project.short_name in _is_name.stdout"
+
+- name: create ImageStream list
+  set_fact:
+    is_data:
+      imagestreams:
+        - name: "{{ zuul.project.short_name }}"
+          imagestream: "{{ _is_name.stdout }}"
+
+- name: store imagestream list in work_root
+  copy:
+    content: "{{ is_data | to_yaml }}"
+    dest: "{{ zuul.executor.work_root }}/imagestreams.yaml"
