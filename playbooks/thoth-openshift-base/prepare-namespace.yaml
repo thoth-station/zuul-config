@@ -11,7 +11,7 @@
     state: present
     namespace: "{{ zuul_resources['namespace'].namespace }}"
     definition:
-      apiVersion: image.openshift.io/v1
+      apiVersion: v1
       kind: ImageStream
       metadata:
         name: python-36-centos7
