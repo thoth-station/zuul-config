@@ -14,8 +14,6 @@
       apiVersion: image.openshift.io/v1
       kind: ImageStream
       metadata:
-        annotations:
-          openshift.io/image.dockerRepositoryCheck: 2018-07-04T18:44:16Z
         name: python-36-centos7
       spec:
         lookupPolicy:
@@ -25,7 +23,6 @@
           from:
             kind: DockerImage
             name: registry.centos.org/centos/python-36-centos7
-          importPolicy: {}
           name: latest
           referencePolicy:
             type: Source
@@ -33,8 +30,6 @@
         dockerImageRepository: docker-registry.default.svc:5000/thoth-test-core/python-36-centos7
         tags:
         - items:
-          - created: 2018-07-04T18:44:16Z
-            dockerImageReference: registry.centos.org/centos/python-36-centos7@sha256:d6aa25342703a6fc78230750dfbe840b5f9b04a28639e6665f9f8ff224b4ad47
-            generation: 1
+          - dockerImageReference: registry.centos.org/centos/python-36-centos7@sha256:d6aa25342703a6fc78230750dfbe840b5f9b04a28639e6665f9f8ff224b4ad47
             image: sha256:d6aa25342703a6fc78230750dfbe840b5f9b04a28639e6665f9f8ff224b4ad47
           tag: latest
