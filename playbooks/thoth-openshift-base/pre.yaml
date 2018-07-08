@@ -24,4 +24,5 @@
         zuul_log_url: "https://zuul.thoth-station.ninja/logs"
 
     - include_tasks: prepare-namespace.yaml
+    - include_tasks: build-tests-image.yaml
     - include_tasks: record-imagestreams.yaml

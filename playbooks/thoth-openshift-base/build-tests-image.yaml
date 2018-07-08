@@ -1,0 +1,11 @@
+---
+- name: prepare dumb bare clone of future state
+  git:
+    repo: "{{ zuul.executor.work_root }}/{{ zuul.project.src_dir }}"
+    dest: "{{ zuul.executor.work_root }}/{{ zuul.project.src_dir }}.git"
+    bare: yes
+
+- name: update server info for dumb http transport
+  command: git update-server-info
+  args:
+    chdir: "{{ zuul.executor.work_root }}/{{ zuul.project.src_dir }}.git"
