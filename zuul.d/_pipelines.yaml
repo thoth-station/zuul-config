@@ -50,8 +50,9 @@
             type: approved
         # Require label
         label: approved
-        status: "thoth-zuul\\[bot\\]:local/check:success"
-        status: "wip:wip:success"
+        status:
+          - "thoth-zuul\\[bot\\]:local/check:success"
+          - "wip:wip:success"
         open: True
         current-patchset: True
     trigger:
