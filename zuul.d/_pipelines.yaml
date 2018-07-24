@@ -51,6 +51,7 @@
         # Require label
         label: approved
         status: "thoth-zuul\\[bot\\]:local/check:success"
+        status: "wip:wip:success"
         open: True
         current-patchset: True
     trigger:
