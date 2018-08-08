@@ -8,12 +8,18 @@
       ara_report_run: True
       ara_report_type: database
       ara_report_path: ara-report
+    - role: log-classify
+      logclassify_model_store_url: https://zuul.thoth-station.ninja/logs/classifiers
+      logclassify_zuul_web: https://zuul.thoth-station.ninja/zuul/api/tenant/local
+      logclassify_model_dir: /var/lib/log-classify
+      logclassify_local_dir: "{{ zuul.executor.log_root }}"
 
 - hosts: "{{ site_sflogs.fqdn }}"
   gather_facts: false
   tasks:
     # Use a block because play vars doesn't take precedence on roles vars
     - block:
+        - import_role: name=upload-log-classify-model
         - import_role: name=upload-logs
         - import_role: name=emit-job-report
         - import_role: name=buildset-artifacts-location
