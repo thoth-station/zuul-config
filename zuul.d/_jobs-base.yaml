@@ -26,6 +26,9 @@
 - job:
     name: config-check
     parent: base
+    final: true
+    allowed-projects:
+      - thoth-station/zuul-test-config
     description: Validate the config repo.
     run: playbooks/config/check.yaml
     post-run: playbooks/config/check-fetch-artifacts.yaml
@@ -39,6 +42,9 @@
 - job:
     name: config-update
     parent: base
+    final: true
+    allowed-projects:
+      - thoth-station/zuul-test-config
     description: Deploy config repo update.
     run: playbooks/config/update.yaml
     secrets:

@@ -3,6 +3,8 @@
 labels:
   - name: openshift-project
     min-ready: 0
+  - name: openshift-pod-fedora
+    min-ready: 0
 
 
 
