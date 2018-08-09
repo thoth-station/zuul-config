@@ -1,7 +1,7 @@
 - nodeset:
     name: thoth-engint
     nodes:
-      - name: project
+      - name: namespace
         label: thoth-engint
 
 - nodeset:
