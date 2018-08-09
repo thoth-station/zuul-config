@@ -11,7 +11,7 @@
         label: openshift-project
 
 - nodeset:
-    name: openpaas-fedora
+    name: openpaas-thoth-python-36-centos7-pod
     nodes:
       - name: pod
-        label: openshift-pod-fedora
+        label: thoth-python-36-centos7-pod

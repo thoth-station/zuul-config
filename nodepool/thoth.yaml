@@ -2,7 +2,7 @@
 labels:
   - name: openshift-project
     min-ready: 1
-  - name: openshift-pod-fedora
+  - name: thoth-python-36-centos7-pod
     min-ready: 2
 
 providers:
@@ -14,6 +14,6 @@ providers:
        labels:
          - name: openshift-project
            type: project
-         - name: openshift-pod-fedora
+         - name: thoth-python-36-centos7-pod
            type: pod
-           image: registry.fedoraproject.org/fedora:28
+           image: quay.io/aicoe/thoth-python-36-centos7
