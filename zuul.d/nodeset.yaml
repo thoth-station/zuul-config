@@ -1,5 +1,17 @@
 - nodeset:
     name: thoth-engint
     nodes:
-      - name: namespace
+      - name: project
         label: thoth-engint
+
+- nodeset:
+    name: openpaas-project
+    nodes:
+      - name: project
+        label: openshift-project
+
+- nodeset:
+    name: openpaas-fedora
+    nodes:
+      - name: pod
+        label: openshift-pod-fedora

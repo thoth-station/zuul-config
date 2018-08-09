@@ -1,0 +1,19 @@
+---
+labels:
+  - name: openshift-project
+    min-ready: 1
+  - name: openshift-pod-fedora
+    min-ready: 2
+
+providers:
+ - name: openpaas
+   driver: openshift
+   context: /open-paas-redhat-com:443/cgoern
+   pools:
+     - name: zuul-ci
+       labels:
+         - name: openshift-project
+           type: project
+         - name: openshift-pod-fedora
+           type: pod
+           image: registry.fedoraproject.org/fedora:28
