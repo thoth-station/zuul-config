@@ -35,7 +35,7 @@
     post-run:
       - playbooks/base/post.yaml
     roles:
-      - zuul: sf-jobs
+      - zuul: thoth-station/zuul-test-jobs
       - zuul: zuul-jobs
     # Set attempts to 1 until it's working well
     attempts: 1
