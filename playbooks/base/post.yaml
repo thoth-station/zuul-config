@@ -13,6 +13,8 @@
       logclassify_zuul_web: https://zuul.thoth-station.ninja/zuul/api/tenant/local
       logclassify_model_dir: /var/lib/log-classify
       logclassify_local_dir: "{{ zuul.executor.log_root }}"
+      # Set report to True to set the log url to the report file directly
+      logclassify_report: true
 
 - hosts: "{{ site_sflogs.fqdn }}"
   gather_facts: false
