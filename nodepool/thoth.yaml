@@ -16,4 +16,4 @@ providers:
            type: project
          - name: thoth-python-36-centos7-pod
            type: pod
-           image: quay.io/aicoe/thoth-python-36-centos7
+           image: quay.io/aicoe/thoth-python-36-centos7:v0.1.1
