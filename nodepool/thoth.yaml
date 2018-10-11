@@ -1,14 +1,14 @@
 ---
   labels:
     - name: linter-pod
-      min-ready: 2
+      min-ready: 0
 
   providers:
     - name: goern-dev-prow
       driver: openshiftpods
       context: "goern-dev-prow/paas-upshift-redhat-com:443/system:serviceaccount:goern-dev-prow:nodepool"
       pools:
-        - name: zuul
+        - name: goern-dev-prow
           labels:
             - name: linter-pod
               image: quay.io/thoth-station/python36-fedora28:latest
