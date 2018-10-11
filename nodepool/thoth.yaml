@@ -1,19 +1,14 @@
 ---
-labels:
-  - name: openshift-project
-    min-ready: 1
-  - name: thoth-python-36-centos7-pod
-    min-ready: 2
+  labels:
+    - name: linter-pod
+      min-ready: 2
 
-providers:
- - name: openpaas
-   driver: openshift
-   context: /open-paas-redhat-com:443/cgoern
-   pools:
-     - name: zuul-ci
-       labels:
-         - name: openshift-project
-           type: project
-         - name: thoth-python-36-centos7-pod
-           type: pod
-           image: quay.io/aicoe/thoth-python-36-centos7:v0.1.1
+  providers:
+    - name: goern-dev-prow
+      driver: openshiftpods
+      context: "goern-dev-prow/paas-upshift-redhat-com:443/system:serviceaccount:goern-dev-prow:nodepool"
+      pools:
+        - name: zuul
+          labels:
+            - name: linter-pod
+              image: quay.io/thoth-station/python36-fedora28:latest
