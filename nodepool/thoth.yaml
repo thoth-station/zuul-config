@@ -1,7 +1,9 @@
 ---
   labels:
     - name: linter-pod
-      min-ready: 0
+      min-ready: 1
+    - name: coala-pod
+      min-ready: 1
 
   providers:
     - name: goern-dev-prow
@@ -11,4 +13,6 @@
         - name: goern-dev-prow
           labels:
             - name: linter-pod
-              image: quay.io/thoth-station/python36-fedora28:latest
+              image: thoth-pylint:latest
+            - name: coala-pod
+              image: thoth-coala:latest
