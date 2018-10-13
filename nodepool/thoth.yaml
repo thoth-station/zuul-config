@@ -6,11 +6,11 @@
       min-ready: 1
 
   providers:
-    - name: goern-dev-prow
+    - name: thoth-test-core
       driver: openshiftpods
-      context: "goern-dev-prow/paas-upshift-redhat-com:443/system:serviceaccount:goern-dev-prow:nodepool"
+      context: "thoth-test-core/paas-upshift-redhat-com:443/system:serviceaccount:thoth-test-core:nodepool"
       pools:
-        - name: goern-dev-prow
+        - name: thoth-test-core
           labels:
             - name: linter-pod
               image: thoth-pylint:latest
