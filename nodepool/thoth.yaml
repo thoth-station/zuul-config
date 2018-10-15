@@ -1,18 +1,22 @@
 ---
   labels:
-    - name: linter-pod
+    - name: "thoth-linter"
       min-ready: 1
-    - name: coala-pod
+    - name: "thoth-coala"
+      min-ready: 1
+    - name: "thoth-pytest"
       min-ready: 1
 
   providers:
-    - name: thoth-test-core
+    - name: "thoth-test-core"
       driver: openshiftpods
       context: "thoth-test-core/paas-upshift-redhat-com:443/system:serviceaccount:thoth-test-core:nodepool"
       pools:
-        - name: thoth-test-core
+        - name: "thoth-test-core"
           labels:
-            - name: linter-pod
-              image: thoth-pylint:latest
-            - name: coala-pod
-              image: thoth-coala:latest
+            - name: "thoth-pylint"
+              image: "thoth-pylint:latest"
+            - name: "thoth-coala"
+              image: "thoth-coala:latest"
+            - name: "thoth-pytest"
+              image: "thoth-pytest:latest"
