@@ -1,8 +1,8 @@
 ---
   labels:
-    - name: "thoth-linter"
-      min-ready: 1
     - name: "thoth-coala"
+      min-ready: 1
+    - name: "thoth-pylint"
       min-ready: 1
     - name: "thoth-pytest"
       min-ready: 1
@@ -14,9 +14,9 @@
       pools:
         - name: "thoth-test-core"
           labels:
-            - name: "thoth-pylint"
-              image: "thoth-pylint:latest"
             - name: "thoth-coala"
               image: "thoth-coala:latest"
+            - name: "thoth-pylint"
+              image: "thoth-pylint:latest"
             - name: "thoth-pytest"
               image: "thoth-pytest:latest"
