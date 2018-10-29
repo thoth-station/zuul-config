@@ -6,6 +6,8 @@
       min-ready: 1
     - name: "thoth-pytest"
       min-ready: 1
+    - name: "thoth-ops"
+      min-ready: 0
 
   providers:
     - name: "thoth-test-core"
@@ -20,3 +22,5 @@
               image: "thoth-pylint:latest"
             - name: "thoth-pytest"
               image: "thoth-pytest:latest"
+            - name: "thoth-ops"
+              image: "thoth-ops:latest"
