@@ -18,6 +18,20 @@
           labels:
             - name: "thoth-coala"
               image: "thoth-coala:latest"
+            - name: "thoth-pylint"
+              image: "thoth-pylint:latest"
+            - name: "thoth-pytest"
+              image: "thoth-pytest:latest"
+            - name: "thoth-ops"
+              image: "thoth-ops:latest"
+    - name: "thoth-test-aistacks"
+      driver: openshiftpods
+      context: "thoth-zuul/paas-upshift-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
+      pools:
+        - name: "thoth-zuul"
+          labels:
+            - name: "thoth-coala"
+              image: "thoth-coala:latest"
               cpu: 1
               memory: 1024
             - name: "thoth-pylint"
