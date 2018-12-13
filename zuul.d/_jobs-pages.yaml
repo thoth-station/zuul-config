@@ -1,3 +1,4 @@
+# This file is managed by ansible, do not edit directly
 ---
 - job:
     name: build-and-publish-pages

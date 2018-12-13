@@ -42,6 +42,7 @@
       http://docs.openstack.org/infra/manual/developers.html#automated-testing
     manager: dependent
     precedence: high
+    post-review: True
     require:
       github.com:
         review:
@@ -50,9 +51,7 @@
             type: approved
         # Require label
         label: approved
-        status:
-          - "thoth-zuul\\[bot\\]:local/check:success"
-          - "wip:wip:success"
+        status: "thoth-zuul\\[bot\\]:local/check:success"
         open: True
         current-patchset: True
     trigger:
@@ -142,7 +141,7 @@
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
+          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))$
     success:
       sqlreporter:
     failure:
@@ -168,6 +167,25 @@
         from: "zuul@zuul.thoth-station.ninja"
         to: "goern+sesheta@redhat.com"
         subject: '[Zuul] Job failed in periodic pipeline: {change.project}'
+      sqlreporter:
+
+- pipeline:
+    name: experimental
+    description: On-demand pipeline for requesting a run against a set of jobs that are not yet gating. Leave review comment of "check experimental" to run jobs in this pipeline.
+    success-message: Build succeeded (experimental pipeline).
+    failure-message: Build failed (experimental pipeline).
+    manager: independent
+    precedence: normal
+    trigger:
+      github.com:
+        - event: pull_request
+          action: comment
+          comment: (?i)^\s*check experimental\s*$
+    success:
+      github.com: {}
+      sqlreporter:
+    failure:
+      github.com: {}
       sqlreporter:
 
 - pipeline:

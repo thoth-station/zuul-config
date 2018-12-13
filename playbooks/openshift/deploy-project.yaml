@@ -1,8 +1,10 @@
+# This file is managed by ansible, do not edit directly
 ---
 - name: start the project
   openshift_raw:
     state: present
     namespace: "{{ zuul_resources['project'].namespace }}"
+    context: "{{ zuul_resources['project'].context }}"
     definition:
       apiVersion: v1
       kind: DeploymentConfig
@@ -43,20 +45,16 @@
         test: false
 
 - name: get project pod name
-  command: oc get pods --field-selector=status.phase=Running -o "jsonpath={.items[?(@.metadata.labels.app=='{{ zuul.project.short_name }}')].metadata.name}"
+  command: >
+    {{ oc_command }} get pods --field-selector=status.phase=Running
+    -o "jsonpath={.items[?(@.metadata.labels.app=='{{ zuul.project.short_name }}')].metadata.name}"
   register: _pod_name
   retries: 600
   delay: 1
   until: "zuul.project.short_name in _pod_name.stdout"
 
-- name: create pods list
-  set_fact:
-    pods_data:
-      pods:
-        - name: "{{ zuul.project.short_name }}"
-          pod: "{{ _pod_name.stdout }}"
-
-- name: store pods list in work_root
-  copy:
-    content: "{{ pods_data | to_yaml }}"
-    dest: "{{ zuul.executor.work_root }}/pods.yaml"
+- name: add pod to the job inventory
+  zuul_return:
+    data:
+      zuul:
+        inventory: '{"{{ zuul.project.short_name }}": {"ansible_connection": "kubectl", "ansible_host": "{{ _pod_name.stdout }}"}}'

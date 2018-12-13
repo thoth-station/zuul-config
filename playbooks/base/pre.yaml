@@ -1,3 +1,4 @@
+# This file is managed by ansible, do not edit directly
 ---
 - hosts: localhost
   tasks:
@@ -12,3 +13,4 @@
   roles:
     - prepare-workspace
     - role: validate-host
+    - add-build-sshkey

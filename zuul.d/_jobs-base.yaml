@@ -1,3 +1,4 @@
+# This file is managed by ansible, do not edit directly
 ---
 - job:
     name: base
@@ -10,7 +11,6 @@
       - zuul: thoth-station/zuul-test-jobs
       - zuul: zuul-jobs
     timeout: 1800
-    # Set attempts to 1 until it's working well
     attempts: 3
     secrets:
       - site_sflogs
@@ -32,6 +32,8 @@
     description: Validate the config repo.
     run: playbooks/config/check.yaml
     post-run: playbooks/config/check-fetch-artifacts.yaml
+    secrets:
+      - service_user
     vars:
       zuul_log_url: "https://zuul.thoth-station.ninja/logs"
       gateway_url: "https://zuul.thoth-station.ninja"

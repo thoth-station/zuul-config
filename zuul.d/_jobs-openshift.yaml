@@ -42,8 +42,6 @@
     secrets:
       - site_sflogs
     timeout: 1800
-    vars:
-      logclassify_ara_database: true
     nodeset:
       nodes:
         - name: pod

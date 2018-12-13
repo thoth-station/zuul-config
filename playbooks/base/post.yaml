@@ -1,3 +1,4 @@
+# This file is managed by ansible, do not edit directly
 ---
 - hosts: localhost
   roles:
@@ -13,8 +14,6 @@
       logclassify_zuul_web: https://zuul.thoth-station.ninja/zuul/api/tenant/local
       logclassify_model_dir: /var/lib/log-classify
       logclassify_local_dir: "{{ zuul.executor.log_root }}"
-      # Set report to True to set the log url to the report file directly
-      logclassify_report: true
 
 - hosts: "{{ site_sflogs.fqdn }}"
   gather_facts: false
@@ -27,5 +26,5 @@
         - import_role: name=buildset-artifacts-location
       vars:
         zuul_log_url: "https://zuul.thoth-station.ninja/logs"
-        zuul_logserver_root: /var/www/logs
+        zuul_logserver_root: "{{ site_sflogs.path }}"
 
