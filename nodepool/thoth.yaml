@@ -24,7 +24,7 @@
               image: "thoth-pytest:latest"
             - name: "thoth-ops"
               image: "thoth-ops:latest"
-    - name: "thoth-test-aistacks"
+    - name: "thoth-zuul"
       driver: openshiftpods
       context: "thoth-zuul/paas-upshift-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
       pools:
@@ -40,7 +40,7 @@
               memory: 1024
             - name: "thoth-pytest"
               image: "thoth-pytest:latest"
-              cpu: 1
+              cpu: 2
               memory: 1024
             - name: "thoth-ops"
               image: "thoth-ops:latest"
