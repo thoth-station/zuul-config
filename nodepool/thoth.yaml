@@ -16,13 +16,13 @@
       pools:
         - name: "thoth-test-core"
           labels:
-            - name: "thoth-coala"
+            - name: "thoth-coala-o"
               image: "thoth-coala:latest"
-            - name: "thoth-pylint"
+            - name: "thoth-pylint-o"
               image: "thoth-pylint:latest"
-            - name: "thoth-pytest"
+            - name: "thoth-pytest-o"
               image: "thoth-pytest:latest"
-            - name: "thoth-ops"
+            - name: "thoth-ops-o"
               image: "thoth-ops:latest"
     - name: "thoth-zuul"
       driver: openshiftpods
