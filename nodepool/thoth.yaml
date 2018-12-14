@@ -10,20 +10,6 @@
       min-ready: 0
 
   providers:
-    - name: "thoth-test-core"
-      driver: openshiftpods
-      context: "thoth-test-core/paas-upshift-redhat-com:443/system:serviceaccount:thoth-test-core:nodepool"
-      pools:
-        - name: "thoth-test-core"
-          labels:
-            - name: "thoth-coala-o"
-              image: "thoth-coala:latest"
-            - name: "thoth-pylint-o"
-              image: "thoth-pylint:latest"
-            - name: "thoth-pytest-o"
-              image: "thoth-pytest:latest"
-            - name: "thoth-ops-o"
-              image: "thoth-ops:latest"
     - name: "thoth-zuul"
       driver: openshiftpods
       context: "thoth-zuul/paas-upshift-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
