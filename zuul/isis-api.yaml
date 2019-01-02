@@ -1,0 +1,7 @@
+---
+- tenant:
+    name: 'local'
+    source:
+      github.com:
+        untrusted-projects:
+          - thoth-station/isis-api
