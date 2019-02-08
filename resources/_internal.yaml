@@ -27,6 +27,7 @@ resources:
       source-repositories:
         - thoth-station/zuul-test-config:
             zuul/config-project: True
+            zuul/exclude-unprotected-branches: True
         - thoth-station/zuul-test-jobs
         - zuul-jobs:
             connection: local-git
