@@ -5,7 +5,8 @@
     source:
       github.com:
         config-projects:
-          - thoth-station/zuul-test-config
+          - thoth-station/zuul-test-config:
+              exclude-unprotected-branches: true
         untrusted-projects:
           - thoth-station/zuul-test-jobs
 
