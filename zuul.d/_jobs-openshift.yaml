@@ -37,12 +37,11 @@
     roles:
       - zuul: thoth-station/zuul-test-jobs
       - zuul: zuul-jobs
-    attempts: 3
+    # Set attempts to 1 until it's working well
+    attempts: 1
     secrets:
       - site_sflogs
     timeout: 1800
-    vars:
-      logclassify_ara_database: true
     nodeset:
       nodes:
         - name: pod
