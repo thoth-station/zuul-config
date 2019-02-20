@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Trigger OpenShift Build
+      uri:
+        method: POST
+        url: "{{ webhook_url }}/webhooks/{{ webhook_secret.key }}/generic"
+        body_format: json
+        content: ""
+        validate_certs: no
+        follow_redirects: all
+        headers:
+          Content-Type: "application/json"

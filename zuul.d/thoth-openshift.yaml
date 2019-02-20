@@ -1,5 +1,3 @@
-# This file is managed by sfconfig, do not edit manually
-# The Openshift driver is a Tech Preview, use at your own risk...
 ---
 - job:
     name: base-thoth-openshift
@@ -20,3 +18,13 @@
       nodes:
         - name: namespace
           label: thoth-engint
+
+- job:
+    name: trigger-build
+    description: This will trigger an OpenShift Build
+    branches: master
+    final: true
+    run: playbooks/thoth-openshift-trigger-build/run.yaml
+    secrets:
+      - name: webhook_secret
+        secret: sesheta_webhooks_generic_webhook_secret
