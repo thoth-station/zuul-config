@@ -23,7 +23,6 @@
     name: trigger-build
     description: This will trigger an OpenShift Build
     branches: master
-    final: true
     run: playbooks/thoth-openshift-trigger-build/run.yaml
     secrets:
       - name: webhook_secret
