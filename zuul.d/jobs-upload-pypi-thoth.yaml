@@ -1,0 +1,10 @@
+---
+- job:
+    name: upload-pypi-sesheta
+    post-review: true
+    description: Release wheel to pypi using sesheta account
+    run: playbooks/publish/release.yaml
+    post-run: playbooks/publish/pypi.yaml
+    secrets:
+      - secret: pypi_sesheta
+        name: pypi_info
