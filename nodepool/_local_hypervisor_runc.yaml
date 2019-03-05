@@ -8,9 +8,13 @@ providers:
   - name: managed-runc-provider
     driver: runc
     pools:
-      - name: managesf.zuul.thoth-station.ninja
+      - name: zuul-executor-1.thoth-station.ninja
         max-servers: 10
         labels:
           - name: runc-centos
             username: zuul-worker
-
+      - name: zuul-1.thoth-station.ninja
+        max-servers: 5
+        labels:
+          - name: runc-centos
+            username: zuul-worker
