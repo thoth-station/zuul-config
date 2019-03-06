@@ -4,7 +4,7 @@ resources:
   tenants:
     local:
       description: "The local tenant."
-      url: "https://zuul.thoth-station.ninja/manage"
+      url: "https://thoth-station.ninja/manage"
       default-connection: github.com
 
   connections:
@@ -13,11 +13,8 @@ resources:
       type: github
       github-app-name: thoth-zuul
       github-label: approved
-    local-git:
-      base-url: "file:///var/lib/software-factory/git"
-      type: git
-    git.openstack.org:
-      base-url: "https://git.openstack.org/"
+    git.zuul-ci.org:
+      base-url: "https://git.zuul-ci.org"
       type: git
 
   projects:
@@ -25,11 +22,10 @@ resources:
       tenant: local
       description: Internal configuration project
       source-repositories:
-        - thoth-station/zuul-test-config:
+        - thoth-station/zuul-config:
             zuul/config-project: True
-            zuul/exclude-unprotected-branches: True
-        - thoth-station/zuul-test-jobs
+        - thoth-station/zuul-jobs
         - zuul-jobs:
-            connection: local-git
+            connection: git.zuul-ci.org
             zuul/include: [job]
-            zuul/shadow: thoth-station/zuul-test-jobs
+            zuul/shadow: thoth-station/zuul-jobs

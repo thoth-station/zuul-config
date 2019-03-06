@@ -13,8 +13,4 @@ providers:
         labels:
           - name: runc-centos
             username: zuul-worker
-      - name: zuul-1.thoth-station.ninja
-        max-servers: 5
-        labels:
-          - name: runc-centos
-            username: zuul-worker
+

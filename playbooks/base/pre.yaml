@@ -7,7 +7,7 @@
         # This depends-on https://review.openstack.org/578234
         - import_role: name=log-inventory
       vars:
-        zuul_log_url: "https://zuul.thoth-station.ninja/logs"
+        zuul_log_url: "https://thoth-station.ninja/logs"
 
 - hosts: all
   roles:

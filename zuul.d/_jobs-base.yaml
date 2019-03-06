@@ -8,7 +8,7 @@
     post-run:
       - playbooks/base/post.yaml
     roles:
-      - zuul: thoth-station/zuul-test-jobs
+      - zuul: thoth-station/zuul-jobs
       - zuul: zuul-jobs
     timeout: 1800
     attempts: 3
@@ -28,15 +28,15 @@
     parent: base
     final: true
     allowed-projects:
-      - thoth-station/zuul-test-config
+      - thoth-station/zuul-config
     description: Validate the config repo.
     run: playbooks/config/check.yaml
     post-run: playbooks/config/check-fetch-artifacts.yaml
     secrets:
       - service_user
     vars:
-      zuul_log_url: "https://zuul.thoth-station.ninja/logs"
-      gateway_url: "https://zuul.thoth-station.ninja"
+      zuul_log_url: "https://thoth-station.ninja/logs"
+      gateway_url: "https://thoth-station.ninja"
       tenant_config: False
     nodeset:
       nodes: []
@@ -46,7 +46,7 @@
     parent: base
     final: true
     allowed-projects:
-      - thoth-station/zuul-test-config
+      - thoth-station/zuul-config
     description: Deploy config repo update.
     run: playbooks/config/update.yaml
     secrets:
@@ -56,7 +56,7 @@
       nodes: []
 
 - project:
-    name: thoth-station/zuul-test-config
+    name: thoth-station/zuul-config
     check:
       jobs:
         - config-check
@@ -67,18 +67,9 @@
       jobs:
         - config-update
 
-- project:
-    name: zuul-jobs
-    check:
-      jobs:
-        - linters
-    gate:
-      jobs:
-        - linters
-
 
 - project:
-    name: thoth-station/zuul-test-jobs
+    name: thoth-station/zuul-jobs
     check:
       jobs:
         - linters
@@ -94,7 +85,7 @@
     nodeset:
       nodes: []
     vars:
-      zuul_web_url: "https://zuul.thoth-station.ninja/zuul"
+      zuul_web_url: "https://thoth-station.ninja/zuul"
     description: |
       This job wait for the queue ahead to be empty.
 

@@ -13,7 +13,7 @@
     protected: true
     vars:
       src_dir: /
-      fqdn: zuul.thoth-station.ninja
+      fqdn: thoth-station.ninja
 
 - job:
     name: build-pages
