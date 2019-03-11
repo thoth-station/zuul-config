@@ -67,7 +67,6 @@
       jobs:
         - config-update
 
-
 - project:
     name: thoth-station/zuul-jobs
     check:
@@ -76,7 +75,6 @@
     gate:
       jobs:
         - linters
-
 
 - job:
     name: wait-for-changes-ahead

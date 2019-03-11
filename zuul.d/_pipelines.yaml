@@ -18,16 +18,16 @@
           comment: (?i)^\s*recheck\s*$
     start:
       github.com:
-        status: 'pending'
-        status-url: "https://thoth-station.ninja/zuul/t/local/status.html"
+        status: "pending"
+        status-url: "https://managesf.thoth-station.ninja/zuul/t/local/status"
         comment: false
     success:
       github.com:
-        status: 'success'
+        status: "success"
       sqlreporter:
     failure:
       github.com:
-        status: 'failure'
+        status: "failure"
       sqlreporter:
 
 - pipeline:
@@ -77,18 +77,18 @@
             - approved
     start:
       github.com:
-        status: 'pending'
-        status-url: "https://thoth-station.ninja/zuul/t/local/status.html"
+        status: "pending"
+        status-url: "https://managesf.thoth-station.ninja/zuul/t/local/status"
         comment: false
     success:
       github.com:
-        status: 'success'
+        status: "success"
         merge: true
         comment: true
       sqlreporter:
     failure:
       github.com:
-        status: 'failure'
+        status: "failure"
         comment: true
       sqlreporter:
     window-floor: 20
@@ -109,8 +109,8 @@
     failure:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "root@localhost"
-        subject: '[Zuul] Job failed in post pipeline: {change.project}'
+        to: "goern+thoth@redhat.com"
+        subject: "[Zuul] Job failed in post pipeline: {change.project}"
       sqlreporter:
 
 - pipeline:
@@ -129,8 +129,8 @@
       sqlreporter:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "root@localhost"
-        subject: '[Zuul] Job failed in pre-release pipeline: {change.project}'
+        to: "goern+thoth@redhat.com"
+        subject: "[Zuul] Job failed in pre-release pipeline: {change.project}"
 
 - pipeline:
     name: release
@@ -147,8 +147,8 @@
     failure:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "root@localhost"
-        subject: '[Zuul] Job failed in release pipeline: {change.project}'
+        to: "goern+thoth@redhat.com"
+        subject: "[Zuul] Job failed in release pipeline: {change.project}"
       sqlreporter:
 
 - pipeline:
@@ -159,14 +159,14 @@
     precedence: low
     trigger:
       timer:
-        - time: '0 0 * * *'
+        - time: "0 0 * * *"
     success:
       sqlreporter:
     failure:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "root@localhost"
-        subject: '[Zuul] Job failed in periodic pipeline: {change.project}'
+        to: "goern+thoth@redhat.com"
+        subject: "[Zuul] Job failed in periodic pipeline: {change.project}"
       sqlreporter:
 
 - pipeline:
