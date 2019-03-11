@@ -2,7 +2,7 @@
 - hosts: all
 
   tasks:
-    - name: Trigger OpenShift Build
+    - name: "Trigger OpenShift Build"
       uri:
         method: POST
         url: "{{ webhook_url }}/webhooks/{{ webhook_secret.key }}/generic"
