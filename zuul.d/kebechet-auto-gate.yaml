@@ -9,7 +9,7 @@
     precedence: high
     require:
       github.com:
-        label: 
+        label:
           - bot
         status: "thoth-zuul\\[bot\\]:local/check:success"
         open: True
@@ -28,18 +28,18 @@
             - bot
     start:
       github.com:
-        status: 'pending'
-        status-url: "https://zuul.thoth-station.ninja/zuul/t/local/status.html"
+        status: "pending"
+        status-url: "https://managesf.thoth-station.ninja/zuul/t/local/status"
         comment: false
     success:
       github.com:
-        status: 'success'
+        status: "success"
         merge: true
         comment: true
       sqlreporter:
     failure:
       github.com:
-        status: 'failure'
+        status: "failure"
         comment: true
       sqlreporter:
     window-floor: 20
