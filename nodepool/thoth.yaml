@@ -16,6 +16,25 @@
       pools:
         - name: "thoth-zuul"
           labels:
+            - name: "thoth-coala-upshift"
+              image: "thoth-coala:latest"
+              cpu: 1
+              memory: 1024
+            - name: "thoth-pylint-upshift"
+              image: "thoth-pylint:latest"
+              cpu: 1
+              memory: 1024
+            - name: "thoth-pytest-upshift"
+              image: "thoth-pytest:latest"
+              cpu: 2
+              memory: 1024
+
+    - name: "thoth-zuul-psi"
+      driver: openshiftpods
+      context: "thoth-zuul/paas-psi-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
+      pools:
+        - name: "thoth-zuul"
+          labels:
             - name: "thoth-coala"
               image: "thoth-coala:latest"
               cpu: 1
@@ -31,4 +50,4 @@
             - name: "thoth-ops"
               image: "thoth-ops:latest"
               cpu: 1
-              memory: 1024
+              memory: 512
