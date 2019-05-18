@@ -46,7 +46,7 @@
             - name: "thoth-pytest"
               image: "thoth-pytest:latest"
               cpu: 2
-              memory: 1024
+              memory: 2048
             - name: "thoth-ops"
               image: "thoth-ops:latest"
               cpu: 1
