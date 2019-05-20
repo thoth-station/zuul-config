@@ -36,18 +36,18 @@
         - name: "thoth-zuul"
           labels:
             - name: "thoth-coala"
-              image: "thoth-coala:latest"
+              image: "thoth-coala:ubi8"
               cpu: 1
               memory: 1024
             - name: "thoth-pylint"
-              image: "thoth-pylint:latest"
+              image: "thoth-pylint:ubi8"
               cpu: 1
               memory: 1024
             - name: "thoth-pytest"
-              image: "thoth-pytest:latest"
+              image: "thoth-pytest:ubi8"
               cpu: 2
-              memory: 2048
+              memory: 1024
             - name: "thoth-ops"
-              image: "thoth-ops:latest"
+              image: "thoth-ops:v0.10.1"
               cpu: 1
               memory: 512
