@@ -12,3 +12,29 @@
         follow_redirects: all
         headers:
           Content-Type: "application/json"
+      when: webhook_url is defined
+
+    - name: "Trigger OpenShift Build"
+      uri:
+        method: POST
+        url: "https://{{ cluster }}/oapi/v1/namespaces/{{ namespace }}/buildconfigs/{{ buildConfigName }}/webhooks/{{ webhook_secret.key }}/generic"
+        body_format: json
+        content: ""
+        validate_certs: no
+        follow_redirects: all
+        headers:
+          Content-Type: "application/json"
+      when: 
+        - cluster is defined
+        - namespace is defined
+        - buildConfigName is defined
+
+    - name: "Show error message if no build is trigger"
+      debug:
+        msg: 
+          - "No OpenShift Build is triggered, please provide either of the following parameter set" 
+          - "(webhook_url, webhook_secret)"
+          - "(cluster, namespace, buildConfigName, webhook_secret)"
+      when:
+          - webhook_url is not defined
+          - (cluster is not defined) or (namespace is not defined) or (buildConfigName is not defined)
