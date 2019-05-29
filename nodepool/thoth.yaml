@@ -1,5 +1,11 @@
 ---
   labels:
+    - name: "thoth-coala-upshift"
+      min-ready: 1
+    - name: "thoth-pylint-upshift"
+      min-ready: 1
+    - name: "thoth-pytest-upshift"
+      min-ready: 1
     - name: "thoth-coala"
       min-ready: 1
     - name: "thoth-pylint"
@@ -10,7 +16,7 @@
       min-ready: 0
 
   providers:
-    - name: "thoth-zuul"
+    - name: "thoth-zuul-upshift"
       driver: openshiftpods
       context: "thoth-zuul/paas-upshift-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
       pools:
@@ -26,9 +32,32 @@
               memory: 1024
             - name: "thoth-pytest"
               image: "thoth-pytest:latest"
-              cpu: 2
+              cpu: 1
               memory: 1024
             - name: "thoth-ops"
               image: "thoth-ops:latest"
+              cpu: 1
+              memory: 1024
+
+    - name: "thoth-zuul"
+      driver: openshiftpods
+      context: "thoth-zuul/paas-psi-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
+      pools:
+        - name: "thoth-zuul"
+          labels:
+            - name: "thoth-coala"
+              image: "thoth-coala:ubi8"
+              cpu: 1
+              memory: 1024
+            - name: "thoth-pylint"
+              image: "thoth-pylint:ubi8"
+              cpu: 1
+              memory: 1024
+            - name: "thoth-pytest"
+              image: "thoth-pytest:ubi8"
+              cpu: 1
+              memory: 1024
+            - name: "thoth-ops"
+              image: "thoth-ops:v0.11.0"
               cpu: 1
               memory: 1024
