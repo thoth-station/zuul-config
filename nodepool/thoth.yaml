@@ -1,12 +1,12 @@
 ---
   labels:
-    - name: "coala"
+    - name: "thoth-coala"
       min-ready: 1
-    - name: "pylint"
+    - name: "thoth-pylint"
       min-ready: 1
-    - name: "pytest"
+    - name: "thoth-pytest"
       min-ready: 1
-    - name: "ops"
+    - name: "thoth-ops"
       min-ready: 0
 
   providers:
