@@ -1,11 +1,5 @@
 ---
   labels:
-    - name: "thoth-coala-upshift"
-      min-ready: 1
-    - name: "thoth-pylint-upshift"
-      min-ready: 1
-    - name: "thoth-pytest-upshift"
-      min-ready: 1
     - name: "coala"
       min-ready: 1
     - name: "pylint"
@@ -22,19 +16,19 @@
       pools:
         - name: "thoth-zuul"
           labels:
-            - name: "thoth-coala"
+            - name: "coala"
               image: "thoth-coala:latest"
               cpu: 1
               memory: 1024
-            - name: "thoth-pylint"
+            - name: "pylint"
               image: "thoth-pylint:latest"
               cpu: 1
               memory: 1024
-            - name: "thoth-pytest"
+            - name: "pytest"
               image: "thoth-pytest:latest"
               cpu: 1
               memory: 1024
-            - name: "thoth-ops"
+            - name: "ops"
               image: "thoth-ops:latest"
               cpu: 1
               memory: 1024
