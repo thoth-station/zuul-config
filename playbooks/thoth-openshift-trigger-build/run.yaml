@@ -1,6 +1,9 @@
 ---
 - hosts: all
 
+  vars:
+    cluster: "paas.psi.redhat.com"
+
   tasks:
     - name: "Trigger OpenShift Build"
       uri:
@@ -37,4 +40,4 @@
           - "(cluster, namespace, buildConfigName, webhook_secret)"
       when:
           - webhook_url is not defined
-          - (cluster is not defined) or (namespace is not defined) or (buildConfigName is not defined)
+          - (namespace is not defined) or (buildConfigName is not defined)
