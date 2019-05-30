@@ -39,25 +39,25 @@
               cpu: 1
               memory: 1024
 
-    - name: "thoth-zuul"
+    - name: "psi"
       driver: openshiftpods
       context: "thoth-zuul/paas-psi-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
       pools:
         - name: "thoth-zuul"
           labels:
-            - name: "thoth-coala"
+            - name: "coala"
               image: "thoth-coala:ubi8"
               cpu: 1
               memory: 1024
-            - name: "thoth-pylint"
+            - name: "pylint"
               image: "thoth-pylint:ubi8"
               cpu: 1
               memory: 1024
-            - name: "thoth-pytest"
+            - name: "pytest"
               image: "thoth-pytest:ubi8"
               cpu: 1
               memory: 1024
-            - name: "thoth-ops"
+            - name: "ops"
               image: "thoth-ops:v0.11.0"
               cpu: 1
               memory: 1024
