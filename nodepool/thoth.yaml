@@ -6,13 +6,13 @@
       min-ready: 1
     - name: "thoth-pytest-upshift"
       min-ready: 1
-    - name: "thoth-coala"
+    - name: "coala"
       min-ready: 1
-    - name: "thoth-pylint"
+    - name: "pylint"
       min-ready: 1
-    - name: "thoth-pytest"
+    - name: "pytest"
       min-ready: 1
-    - name: "thoth-ops"
+    - name: "ops"
       min-ready: 0
 
   providers:
