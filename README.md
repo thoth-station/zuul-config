@@ -18,10 +18,10 @@ For example, here is an example about how to use this `Zuul` job in `.zuul.yaml`
 post:
   jobs:
     - "trigger-build":
-      vars:
-        cluster: "paas.psi.redhat.com"
-        namespace: "thoth-test-core"
-        buildConfigName: "user-api"
+        vars:
+          cluster: "paas.psi.redhat.com"
+          namespace: "thoth-test-core"
+          buildConfigName: "user-api"
 ```
 
 **Second Step**
