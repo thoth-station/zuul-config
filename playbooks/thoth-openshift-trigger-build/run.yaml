@@ -9,8 +9,6 @@
       uri:
         method: POST
         url: "{{ webhook_url }}/webhooks/{{ webhook_secret.key }}/generic"
-        body_format: json
-        content: ""
         validate_certs: no
         follow_redirects: all
         headers:
@@ -21,8 +19,6 @@
       uri:
         method: POST
         url: "https://{{ cluster }}/oapi/v1/namespaces/{{ namespace }}/buildconfigs/{{ buildConfigName }}/webhooks/{{ webhook_secret.key }}/generic"
-        body_format: json
-        content: ""
         validate_certs: no
         follow_redirects: all
         headers:
