@@ -1,0 +1,5 @@
+---
+- hosts: localhost
+  roles:
+    - role: check-github-pr-is-wip
+      github_pr: "{{ zuul.change_url }}"
