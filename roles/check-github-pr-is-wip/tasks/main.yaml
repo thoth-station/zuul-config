@@ -1,0 +1,3 @@
+---
+- name: Check for WIP labels or WIP title keywords on a GitHub PR
+  script: github_wip.py {{ github_pr }} '{{ wip_keywords }}' '{{ wip_labels }}'
