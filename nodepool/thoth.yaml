@@ -20,21 +20,21 @@
           labels:
             - name: "thoth-coala"
               image: "thoth-coala:ubi8"
-              cpu: "750m"
+              cpu: "0.75"
               memory: 1024
             - name: "thoth-pylint"
               image: "thoth-pylint:ubi8"
-              cpu: "750m"
+              cpu: "0.75"
               memory: 1024
             - name: "thoth-pytest"
               image: "thoth-pytest:ubi8"
-              cpu: "750m"
+              cpu: "0.75"
               memory: 1024
             - name: "thoth-ops"
               image: "thoth-ops:v0.12.1"
-              cpu: "750m"
+              cpu: "0.75"
               memory: 1024
             - name: "thoth-python36"
               image: "thoth-python36"
-              cpu: "500m"
+              cpu: "0.5"
               memory: 1024
