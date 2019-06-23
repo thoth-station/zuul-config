@@ -33,7 +33,8 @@
     parent: "base-openshift-pod"
     description: |
       This job calls the github-wip playbook with a curated set of
-      WIP labels and WIP title keywords
+      WIP labels and WIP title keywords. It fails if the PR is 
+      work in progress.
     run: "playbooks/github-wip/run.yaml"
     nodeset:
       nodes:

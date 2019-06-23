@@ -1,0 +1,12 @@
+---
+- project-template:
+    name: thoth-pre-checks
+    description: |
+      This template contains pre-check jobs for Thoth Station
+      repositories.
+    SoB-check:
+      jobs:
+        - dco-license
+    WIP-check:
+      jobs:
+        - thoth-github-wip
