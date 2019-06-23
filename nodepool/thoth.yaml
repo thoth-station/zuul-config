@@ -29,6 +29,6 @@
               cpu: 1
               memory: 1024
             - name: "thoth-ops"
-              image: "thoth-ops:v0.11.0"
+              image: "thoth-ops:v0.12.0"
               cpu: 1
               memory: 1024
