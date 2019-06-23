@@ -8,6 +8,8 @@
       min-ready: 1
     - name: "thoth-ops"
       min-ready: 0
+    - name: "thoth-python36"
+      min-ready: 0
 
   providers:
     - name: "psi"
@@ -18,17 +20,21 @@
           labels:
             - name: "thoth-coala"
               image: "thoth-coala:ubi8"
-              cpu: 1
+              cpu: 750
               memory: 1024
             - name: "thoth-pylint"
               image: "thoth-pylint:ubi8"
-              cpu: 1
+              cpu: 750
               memory: 1024
             - name: "thoth-pytest"
               image: "thoth-pytest:ubi8"
-              cpu: 1
+              cpu: 750
               memory: 1024
             - name: "thoth-ops"
-              image: "thoth-ops:v0.11.0"
-              cpu: 1
+              image: "thoth-ops:v0.12.1"
+              cpu: 750
+              memory: 1024
+            - name: "thoth-python36"
+              image: "thoth-python36"
+              cpu: 500
               memory: 1024
