@@ -31,7 +31,7 @@
               cpu: 1
               memory: 1024
             - name: "thoth-ops"
-              image: "thoth-ops:v0.12.1"
+              image: "thoth-ops:v0.12.3"
               cpu: 1
               memory: 1024
             - name: "thoth-python36"
