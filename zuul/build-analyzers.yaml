@@ -4,4 +4,4 @@
     source:
       github.com:
         untrusted-projects:
-          - thoth-station/build-analysers
+          - thoth-station/build-analyzers
