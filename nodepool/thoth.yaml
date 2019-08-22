@@ -3,8 +3,10 @@
     - name: "thoth-coala"
       min-ready: 1
     - name: "thoth-pylint"
-      min-ready: 1
+      min-ready: 0
     - name: "thoth-pytest"
+      min-ready: 1
+    - name: "thoth-mypy"
       min-ready: 1
     - name: "thoth-ops"
       min-ready: 0
@@ -28,6 +30,10 @@
               memory: 1024
             - name: "thoth-pytest"
               image: "thoth-pytest:ubi8"
+              cpu: 1
+              memory: 1024
+            - name: "thoth-mypy"
+              image: "thoth-mypy:ubi8"
               cpu: 1
               memory: 1024
             - name: "thoth-ops"
