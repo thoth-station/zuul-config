@@ -109,7 +109,7 @@
     failure:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "goern+thoth@redhat.com"
+        to: "aicoe-thoth-devops@redhat.com"
         subject: "[Zuul] Job failed in post pipeline: {change.project}"
       sqlreporter:
 
@@ -129,7 +129,7 @@
       sqlreporter:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "goern+thoth@redhat.com"
+        to: "aicoe-thoth-devops@redhat.com"
         subject: "[Zuul] Job failed in pre-release pipeline: {change.project}"
 
 - pipeline:
@@ -147,7 +147,7 @@
     failure:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "goern+thoth@redhat.com"
+        to: "aicoe-thoth-devops@redhat.com"
         subject: "[Zuul] Job failed in release pipeline: {change.project}"
       sqlreporter:
 
@@ -165,7 +165,7 @@
     failure:
       smtp:
         from: "zuul@thoth-station.ninja"
-        to: "goern+thoth@redhat.com"
+        to: "aicoe-thoth-devops@redhat.com"
         subject: "[Zuul] Job failed in periodic pipeline: {change.project}"
       sqlreporter:
 
