@@ -1,0 +1,7 @@
+---
+- tenant:
+    name: "local"
+    source:
+      github.com:
+        untrusted-projects:
+          - "AICoE/prometheus-anomaly-detector-legacy"
