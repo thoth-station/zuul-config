@@ -1,46 +1,46 @@
 ---
-  labels:
-    - name: "thoth-coala"
-      min-ready: 1
-    - name: "thoth-pylint"
-      min-ready: 0
-    - name: "thoth-pytest"
-      min-ready: 1
-    - name: "thoth-mypy"
-      min-ready: 1
-    - name: "thoth-ops"
-      min-ready: 0
-    - name: "thoth-python36"
-      min-ready: 0
+labels:
+  - name: "thoth-coala"
+    min-ready: 1
+  - name: "thoth-pylint"
+    min-ready: 1
+  - name: "thoth-pytest"
+    min-ready: 1
+  - name: "thoth-mypy"
+    min-ready: 0
+  - name: "thoth-ops"
+    min-ready: 0
+  - name: "thoth-python36"
+    min-ready: 0
 
-  providers:
-    - name: "psi"
-      driver: openshiftpods
-      context: "thoth-zuul/paas-psi-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
-      pools:
-        - name: "thoth-zuul"
-          labels:
-            - name: "thoth-coala"
-              image: "thoth-coala:ubi8"
-              cpu: 1
-              memory: 1024
-            - name: "thoth-pylint"
-              image: "thoth-pylint:ubi8"
-              cpu: 1
-              memory: 1024
-            - name: "thoth-pytest"
-              image: "thoth-pytest:ubi8"
-              cpu: 1
-              memory: 1024
-            - name: "thoth-mypy"
-              image: "thoth-mypy:ubi8"
-              cpu: 1
-              memory: 1024
-            - name: "thoth-ops"
-              image: "thoth-ops:v0.12.3"
-              cpu: 1
-              memory: 1024
-            - name: "thoth-python36"
-              image: "thoth-python36"
-              cpu: 1
-              memory: 1024
+providers:
+  - name: "psi"
+    driver: openshiftpods
+    context: "thoth-zuul/paas-psi-redhat-com:443/system:serviceaccount:thoth-zuul:nodepool"
+    pools:
+      - name: "thoth-zuul"
+        labels:
+          - name: "thoth-coala"
+            image: "thoth-coala:v0.9.4"
+            cpu: 1
+            memory: 1024
+          - name: "thoth-pylint"
+            image: "thoth-pylint:v0.9.4"
+            cpu: 1
+            memory: 1024
+          - name: "thoth-pytest"
+            image: "thoth-pytest:v0.9.4"
+            cpu: 1
+            memory: 1024
+          - name: "thoth-mypy"
+            image: "thoth-mypy:v0.9.4"
+            cpu: 1
+            memory: 1024
+          - name: "thoth-ops"
+            image: "thoth-ops:v0.14.0"
+            cpu: 1
+            memory: 1024
+          - name: "thoth-python36"
+            image: "thoth-python36"
+            cpu: 1
+            memory: 1024
