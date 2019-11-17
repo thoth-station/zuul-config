@@ -152,7 +152,7 @@
       sqlreporter:
 
 - pipeline:
-    name: periodic
+    name: periodic-daily
     post-review: true
     description: Jobs in this queue are triggered daily.
     manager: independent
@@ -166,8 +166,24 @@
       smtp:
         from: "zuul@thoth-station.ninja"
         to: "aicoe-thoth-devops@redhat.com"
-        subject: "[Zuul] Job failed in periodic pipeline: {change.project}"
+        subject: "[Zuul] Job failed in periodic-daily pipeline: {change.project}"
+
+- pipeline:
+    name: periodic-hourly
+    post-review: true
+    description: Jobs in this queue are triggered hourly.
+    manager: independent
+    precedence: low
+    trigger:
+      timer:
+        - time: "0 * * * *"
+    success:
       sqlreporter:
+    failure:
+      smtp:
+        from: "zuul@thoth-station.ninja"
+        to: "aicoe-thoth-devops@redhat.com"
+        subject: "[Zuul] Job failed in periodic-hourly pipeline: {change.project}"
 
 - pipeline:
     name: experimental
