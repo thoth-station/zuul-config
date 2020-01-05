@@ -43,3 +43,15 @@
     vars:
       wip_labels: "do-not-merge wip rfc"
       wip_keywords: "WIP RFC"
+
+- job:
+    name: "thoth-openshift-apply-templates"
+    parent: "base-openshift-pod"
+    nodeset:
+      nodes:
+        - name: "pod"
+          label: "thoth-ops"
+    run: playbooks/thoth-openshift-apply-template/run.yaml
+    secrets:
+      - name: THOTH_OPS_TOKEN
+        secret: thoth_ops
