@@ -7,8 +7,8 @@
     post-run:
       - playbooks/base/post.yaml
     roles:
-      - zuul: thoth-station/zuul-test-jobs
-      - zuul: zuul-jobs
+      - zuul: github.com/thoth-station/zuul-test-jobs
+      - zuul: opendev.org/zuul/zuul-jobs
     timeout: 1800
     # Set attempts to 1 until it's working well
     attempts: 1
@@ -33,7 +33,7 @@
     parent: "base-openshift-pod"
     description: |
       This job calls the github-wip playbook with a curated set of
-      WIP labels and WIP title keywords. It fails if the PR is 
+      WIP labels and WIP title keywords. It fails if the PR is
       work in progress.
     run: "playbooks/github-wip/run.yaml"
     nodeset:
