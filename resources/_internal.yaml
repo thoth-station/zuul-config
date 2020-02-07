@@ -13,8 +13,8 @@ resources:
       type: github
       github-app-name: thoth-zuul
       github-label: approved
-    git.zuul-ci.org:
-      base-url: "https://git.zuul-ci.org"
+    opendev.org:
+      base-url: "https://opendev.org"
       type: git
 
   projects:
@@ -25,7 +25,7 @@ resources:
         - thoth-station/zuul-config:
             zuul/config-project: True
         - thoth-station/zuul-jobs
-        - zuul-jobs:
-            connection: git.zuul-ci.org
+        - zuul/zuul-jobs:
+            connection: opendev.org
             zuul/include: [job]
             zuul/shadow: thoth-station/zuul-jobs

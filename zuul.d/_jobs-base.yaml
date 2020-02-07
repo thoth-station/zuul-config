@@ -8,8 +8,8 @@
     post-run:
       - playbooks/base/post.yaml
     roles:
-      - zuul: thoth-station/zuul-jobs
-      - zuul: zuul-jobs
+      - zuul: github.com/thoth-station/zuul-jobs
+      - zuul: opendev.org/zuul/zuul-jobs
     timeout: 1800
     attempts: 3
     secrets:
