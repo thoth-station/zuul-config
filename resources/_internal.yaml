@@ -6,6 +6,8 @@ resources:
       description: "The local tenant."
       url: "https://thoth-station.ninja/manage"
       default-connection: github.com
+      tenant-options:
+        zuul/report-build-page: True
 
   connections:
     github.com:
