@@ -4,6 +4,7 @@
   roles:
     - role: add-fileserver
       fileserver: "{{ site_sflogs }}"
+    - role: generate-zuul-manifest
     - role: ara-report
       # This depends-on https://review.openstack.org/577675
       ara_report_run: True
@@ -21,4 +22,3 @@
       vars:
         zuul_log_url: "https://managesf.thoth-station.ninja/logs"
         zuul_logserver_root: "{{ site_sflogs.path }}"
-
