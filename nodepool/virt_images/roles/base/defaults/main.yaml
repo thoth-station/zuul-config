@@ -1,0 +1,10 @@
+---
+image_cache_dir: "/var/cache/nodepool"
+image_wipe_cache: False
+memsize: 2048
+base_packages:
+  - traceroute
+  - iproute
+  - git
+  - rsync
+extra_packages: []
