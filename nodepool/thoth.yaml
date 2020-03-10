@@ -6,6 +6,8 @@ labels:
     min-ready: 1
   - name: "thoth-pytest"
     min-ready: 1
+  - name: "thoth-pytest-py37"
+    min-ready: 1
   - name: "thoth-mypy"
     min-ready: 0
   - name: "thoth-ops"
@@ -21,19 +23,23 @@ providers:
       - name: "thoth-zuul"
         labels:
           - name: "thoth-coala"
-            image: "thoth-coala:v0.9.9"
+            image: "thoth-coala:v0.10.0"
             cpu: 1
             memory: 1024
           - name: "thoth-pylint"
-            image: "thoth-pylint:v0.9.9"
+            image: "thoth-pylint:v0.10.0"
             cpu: 1
             memory: 1024
           - name: "thoth-pytest"
-            image: "thoth-pytest:v0.9.9"
+            image: "thoth-pytest:v0.10.0"
+            cpu: 1
+            memory: 1024
+          - name: "thoth-pytest-py37"
+            image: "thoth-pytest-f31-py37:v0.10.0"
             cpu: 1
             memory: 1024
           - name: "thoth-mypy"
-            image: "thoth-mypy:v0.9.9"
+            image: "thoth-mypy:v0.10.0"
             cpu: 1
             memory: 1024
           - name: "thoth-ops"
