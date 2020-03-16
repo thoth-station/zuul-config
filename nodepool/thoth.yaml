@@ -23,23 +23,23 @@ providers:
       - name: "thoth-zuul"
         labels:
           - name: "thoth-coala"
-            image: "thoth-coala:v0.10.1"
+            image: "thoth-coala:v0.10.2"
             cpu: 1
             memory: 1024
           - name: "thoth-pylint"
-            image: "thoth-pylint:v0.10.1"
+            image: "thoth-pylint:v0.10.2"
             cpu: 1
             memory: 1024
           - name: "thoth-pytest"
-            image: "thoth-pytest:v0.10.1"
+            image: "thoth-pytest:v0.10.2"
             cpu: 1
             memory: 1024
           - name: "thoth-pytest-py37"
-            image: "thoth-pytest-f31-py37:v0.10.1"
+            image: "thoth-pytest-f31-py37:v0.10.2"
             cpu: 1
             memory: 1024
           - name: "thoth-mypy"
-            image: "thoth-mypy:v0.10.1"
+            image: "thoth-mypy:v0.10.2"
             cpu: 1
             memory: 1024
           - name: "thoth-ops"
