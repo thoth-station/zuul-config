@@ -4,4 +4,4 @@
     source:
       github.com:
         untrusted-projects:
-          - AICoE/argocd-customization
+          - AICoE/aicoe-cd
