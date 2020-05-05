@@ -1,0 +1,67 @@
+---
+- name: Build a centos 8 cloud image suitable for Zuul
+  hosts: localhost
+  vars:
+    image_url: https://cloud.centos.org/centos/8/x86_64/images/CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2
+    image_checksum: sha256:e2cf1081645b1089f574918fb808b32d247169ec4ec1a13bca9e14a74df6530e
+    image: CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2
+    extra_packages:
+      # For validate-host, prepare-workspace, add-build-sshkey
+      - traceroute
+      - iproute
+      - git
+      - rsync
+      # Extra system tools
+      - pigz
+      # needs
+      # - bridge-utils
+      - wget
+      - unzip
+      # RPM building tools
+      - redhat-lsb-core
+      - redhat-rpm-config
+      - rpm-build
+      - rpm-sign
+      - rpmlint
+      - createrepo
+      - gnupg2
+      - expect
+      # Basic CI tools
+      - gcc
+      - gcc-c++
+      - make
+      - patch
+      # Ansible/Molecule req
+      - python3
+      - python3-PyYAML
+      - python3-devel
+      - python3-libselinux
+      - python3-netifaces
+      - python3-six
+      - python3-virtualenv
+      # TODO(ssbarnea): Remove workaround made to avoid failure to run upstream
+      # docker-install role that installs docker-ce
+      # https://review.opendev.org/#/c/703053/
+      # https://github.com/geerlingguy/ansible-role-docker/issues/171
+      - https://download.docker.com/linux/centos/7/x86_64/stable/Packages/containerd.io-1.2.6-3.3.el7.x86_64.rpm
+  tasks:
+    - block:
+      - import_role:
+          name: base-appliance
+      - import_role:
+          name: base
+      - import_role:
+          name: sshd-config
+      - import_role:
+          name: network-config
+      - import_role:
+          name: zuul-user
+      - import_role:
+          name: base-install-packages
+      - import_role:
+          name: base-customize
+      - import_role:
+          name: base-finalize
+      always:
+      - import_role:
+          name: base-cleanup
