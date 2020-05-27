@@ -24,10 +24,12 @@
     success:
       github.com:
         status: "success"
+        check: "success"
       sqlreporter:
     failure:
       github.com:
         status: "failure"
+        check: "failure"
       sqlreporter:
 
 - pipeline:
