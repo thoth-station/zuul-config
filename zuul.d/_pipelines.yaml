@@ -141,7 +141,7 @@
     trigger:
       github.com:
         - event: push
-          ref: ^refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
+          ref: ^refs/tags/v([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9a-zA-Z.-]+))?(?:\+([0-9a-zA-Z.-]+))?$
     success:
       sqlreporter:
     failure:
