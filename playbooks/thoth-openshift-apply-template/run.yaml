@@ -1,0 +1,12 @@
+---
+- hosts: all
+
+  vars:
+    cluster: "paas.psi.redhat.com"
+
+  tasks:
+    - name: "log in as thoth-ops"
+      shell: "oc login --insecure-skip-tls-verify=true --token ${THOTH_OPS_TOKEN} https://kubernetes.default.svc.cluster.local"
+
+    - name: "OpenShift whoami"
+      command: "oc whoami"
