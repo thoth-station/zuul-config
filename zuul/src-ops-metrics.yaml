@@ -4,4 +4,4 @@
     source:
       github.com:
         untrusted-projects:
-          - "AICoE/SrcOpsMetrics"
+          - "thoth-station/mi"
